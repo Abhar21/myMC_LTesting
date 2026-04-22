@@ -57,7 +57,7 @@ const SERVICES: Service[] = [
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const autoplayRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isHovered) {
