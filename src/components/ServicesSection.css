@@ -1,0 +1,257 @@
+.services {
+  min-height: 100vh;
+  padding: 8rem 2rem 6rem;
+  /* Increased top padding for breathing room */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  /* Ensure user lands on this section */
+}
+
+.services__container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.services__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.services__eyebrow {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+
+.services__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+/* ── CARDS GRID ── */
+.services__cards {
+  display: flex;
+  height: 480px;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.service-card {
+  position: relative;
+  flex: 1;
+  border-radius: 24px;
+  background: #fcfcfc;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 1.5rem;
+  /* Reduced for collapsed state */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* 'Smart Slow' weighted quintic ease */
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  isolation: isolate;
+}
+
+.service-card--active {
+  flex: 3.5;
+  padding: 2.5rem;
+  /* Spacious padding for expanded content */
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  /* Layered Shadow stack for realistic soft elevation */
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.02),
+    0 30px 60px rgba(0, 0, 0, 0.05),
+    0 60px 100px rgba(0, 0, 0, 0.03);
+}
+
+/* Card Content Hierarchy */
+.service-card__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.service-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* Sync with the card's smart slow glide */
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.service-card--active .service-card__main {
+  /* No more large translateY; stays at bottom */
+  transform: translateY(0);
+}
+
+.service-card__number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.1em;
+}
+
+.service-card__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  /* Reduced collapsed size as requested */
+  font-weight: 500;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  text-shadow: 0 0 0px transparent;
+  /* Base for transition */
+}
+
+.service-card--active .service-card__title {
+  font-size: 2.2rem;
+  /* Smoothly grows to a larger size */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  /* Back-lit text effect */
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hidden Details Reveal */
+.service-card__details {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  overflow: hidden;
+  /* Now below heading in DOM, so it adds height to the bottom-aligned group */
+  transition:
+    opacity 0.4s ease,
+    max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.service-card--active .service-card__details {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+  /* Wait for expansion to start */
+}
+
+.service-card__description {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  /* Reduced margin since button is gone */
+  max-width: 400px;
+}
+
+.service-card__cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.service-card__cta:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.service-card__cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── VISUAL ACCENTS ── */
+.service-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  filter: grayscale(20%) blur(2px);
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+
+.service-card--active .service-card__image {
+  opacity: 0.6;
+  filter: grayscale(0) blur(0);
+  transform: scale(1.05);
+}
+
+/* Gradient overlay for text legibility */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    transparent 100%
+  );
+  z-index: 1;
+  transition: opacity 0.8s ease;
+}
+
+.service-card--active::after {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.4) 40%,
+    transparent 100%
+  );
+}
+
+.service-card__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 2;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .services__cards {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .service-card {
+    min-height: 100px;
+    flex: none !important;
+    width: 100%;
+  }
+
+  .service-card--active {
+    min-height: 320px;
+  }
+}
