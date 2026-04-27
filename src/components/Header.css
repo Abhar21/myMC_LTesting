@@ -1,30 +1,46 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   width: 100%;
   z-index: 100;
-  background: transparent; /* Transparent in Hero section */
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.header--scrolled {
-  background: rgba(255, 255, 255, 0.4); /* Frosted glass reveal */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-}
-
 .header__container {
-  max-width: 100%; /* Fully edge-to-edge */
-  padding: 1.75rem 6rem; /* Increased horizontal padding for internal breathing room */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 5rem;
+  /* Increased horizontal padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Logo left, Partner Access right */
+}
+
+.header__partner-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #ffffff; /* White for dark theme */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header__partner-link:hover {
+  font-weight: 500; /* Bolder on hover */
+}
+
+.header__partner-arrow {
+  display: inline-block;
+  margin-left: 0.4rem;
+  transition: transform 0.3s ease;
+}
+
+.header__partner-link:hover .header__partner-arrow {
+  transform: translateX(6px);
 }
 
 /* ── LOGO IMAGE ── */
@@ -35,10 +51,10 @@
 }
 
 .header__logo-img {
-  height: 32px; /* Adjustable based on actual asset proportions */
+  height: 24px;
+  /* Reduced size as requested */
   width: auto;
   object-fit: contain;
-  /* filter: brightness(0) invert(1); <- Removed for light theme */
   transition: transform 0.3s ease;
 }
 
@@ -50,8 +66,10 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: transparent; /* No fill by default */
-  border: 1px solid #007AFF; /* Platform signature blue outline */
+  background: transparent;
+  /* No fill by default */
+  border: 1px solid #007AFF;
+  /* Platform signature blue outline */
   color: #007AFF;
   padding: 0.7rem 1.4rem 0.7rem 1.8rem;
   font-family: 'Outfit', sans-serif;
@@ -59,7 +77,8 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  text-decoration: none; /* Removed anchor underline */
+  text-decoration: none;
+  /* Removed anchor underline */
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -79,7 +98,8 @@
 }
 
 .btn-cta:hover {
-  background: #007AFF; /* Fills with blue on hover */
+  background: #007AFF;
+  /* Fills with blue on hover */
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 122, 255, 0.2);
 }
@@ -90,7 +110,16 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .header__nav { display: none; } /* Mobile menu can be added later */
-  .header__container { padding: 1rem 1.5rem; }
-  .header__logo-img { height: 26px; }
+  .header__nav {
+    display: none;
+  }
+
+  /* Mobile menu can be added later */
+  .header__container {
+    padding: 1rem 1.5rem;
+  }
+
+  .header__logo-img {
+    height: 26px;
+  }
 }

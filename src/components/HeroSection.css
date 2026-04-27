@@ -37,8 +37,7 @@
   opacity: 0;
   transform: translateY(20px);
   animation:
-    revealUp 1s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-    waterFloating 6s 1.2s ease-in-out infinite;
+    revealUp 1s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes revealUp {
@@ -303,20 +302,22 @@
 
 /* ── GHOST CARDS DESCENT ── */
 .hero__ghost-cards {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
   gap: 0;
   /* No gaps between cards as requested */
   padding: 0;
   /* No padding on sides as requested */
-  pointer-events: auto; /* Enabled for hover effects */
+  pointer-events: auto;
+  /* Enabled for hover effects */
   z-index: 2;
   /* Between blobs and content */
-  perspective: 2000px; /* Enable deep 3D space */
+  perspective: 2000px;
+  /* Enable deep 3D space */
 }
 
 .hero__ghost-card {
@@ -324,33 +325,41 @@
   height: 100%;
   /* Full height strips for more drama */
   border-right: 1px solid rgba(192, 192, 192, 0.1);
-  overflow: visible; /* Allow 3D depth to breathe */
+  overflow: visible;
+  /* Allow 3D depth to breathe */
   position: relative;
-  transform-origin: top; /* Pivot from the top like a curtain */
+  transform-origin: top;
+  /* Pivot from the top like a curtain */
   transform-style: preserve-3d;
 
   /* Initial state */
   opacity: 0;
 
-  animation: 
+  animation:
     clothBillowDescent 7s cubic-bezier(0.23, 1, 0.32, 1) forwards,
-    clothRipple 8s 7s ease-in-out infinite alternate; /* Ripple starts after descent */
-  
-  cursor: crosshair; /* Subtle interaction hint */
+    clothRipple 8s 7s ease-in-out infinite alternate;
+  /* Ripple starts after descent */
+
+  cursor: crosshair;
+  /* Subtle interaction hint */
 }
 
 .hero__ghost-card:hover .hero__ghost-img-wrapper {
-  opacity: 0.55; /* Interactive spotlight */
-  transform: scale(1.05); /* Gentle zoom */
+  opacity: 0.55;
+  /* Interactive spotlight */
+  transform: scale(1.05);
+  /* Gentle zoom */
 }
 
 @keyframes clothRipple {
   0% {
     transform: rotateX(0deg) rotateY(-2deg) skewY(-1deg) translateZ(0);
   }
+
   50% {
     transform: rotateX(1deg) rotateY(2deg) skewY(1deg) translateZ(15px);
   }
+
   100% {
     transform: rotateX(0deg) rotateY(-2deg) skewY(-1deg) translateZ(0);
   }
@@ -361,14 +370,12 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.05) 0%,
-    transparent 20%,
-    rgba(0, 0, 0, 0.02) 50%,
-    transparent 80%,
-    rgba(0, 0, 0, 0.05) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      transparent 20%,
+      rgba(0, 0, 0, 0.02) 50%,
+      transparent 80%,
+      rgba(0, 0, 0, 0.05) 100%);
   opacity: 0;
   pointer-events: none;
   z-index: 3;
@@ -383,12 +390,10 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    110deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.8) 50%,
-    transparent 60%
-  );
+  background: linear-gradient(110deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 60%);
   z-index: 5;
   pointer-events: none;
   animation: cardShine 5s infinite linear;
@@ -398,6 +403,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(150%);
   }
@@ -450,6 +456,7 @@
     opacity: 0.2;
     transform: translateX(-10%);
   }
+
   100% {
     opacity: 0.5;
     transform: translateX(10%);
@@ -457,22 +464,57 @@
 }
 
 /* Staggered rainfall and ripple effect */
-.hero__ghost-card--1 { animation-delay: 0s; }
-.hero__ghost-card--2 { animation-delay: 0.4s; }
-.hero__ghost-card--3 { animation-delay: 0.8s; }
-.hero__ghost-card--4 { animation-delay: 1.2s; }
-.hero__ghost-card--5 { animation-delay: 1.6s; }
-.hero__ghost-card--6 { animation-delay: 2.0s; }
+.hero__ghost-card--1 {
+  animation-delay: 0s;
+}
 
-.hero__ghost-card--1::before { animation-delay: 0s; }
-.hero__ghost-card--2::before { animation-delay: 0.5s; }
-.hero__ghost-card--3::before { animation-delay: 1.0s; }
-.hero__ghost-card--4::before { animation-delay: 1.5s; }
-.hero__ghost-card--5::before { animation-delay: 2.0s; }
-.hero__ghost-card--6::before { animation-delay: 2.5s; }
+.hero__ghost-card--2 {
+  animation-delay: 0.4s;
+}
+
+.hero__ghost-card--3 {
+  animation-delay: 0.8s;
+}
+
+.hero__ghost-card--4 {
+  animation-delay: 1.2s;
+}
+
+.hero__ghost-card--5 {
+  animation-delay: 1.6s;
+}
+
+.hero__ghost-card--6 {
+  animation-delay: 2.0s;
+}
+
+.hero__ghost-card--1::before {
+  animation-delay: 0s;
+}
+
+.hero__ghost-card--2::before {
+  animation-delay: 0.5s;
+}
+
+.hero__ghost-card--3::before {
+  animation-delay: 1.0s;
+}
+
+.hero__ghost-card--4::before {
+  animation-delay: 1.5s;
+}
+
+.hero__ghost-card--5::before {
+  animation-delay: 2.0s;
+}
+
+.hero__ghost-card--6::before {
+  animation-delay: 2.5s;
+}
 
 /* ── ATMOSPHERIC DEPTH BLOBS ── */
 .hero__depth-elements {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
