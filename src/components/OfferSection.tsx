@@ -124,7 +124,17 @@ export default function OfferSection() {
     <>
       <div className="offer-banner">
         <span>INDIA'S #1 Direct Booking Event Platform</span>
-        <a href="#">Get Early Access →</a>
+        <div className="banner-groups">
+          <a href="#" className="banner-cta">
+            Pre-Register on
+            <img src="/220782.png" alt="Play Store" className="banner-icon banner-icon--white" />
+          </a>
+          <span className="banner-separator"></span>
+          <div className="banner-info">
+            Coming Soon to
+            <img src="/747.png" alt="App Store" className="banner-icon banner-icon--white" />
+          </div>
+        </div>
       </div>
 
       <section className="carousel-stage" id="offer-section">
