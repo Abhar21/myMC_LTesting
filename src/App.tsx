@@ -1,5 +1,6 @@
 import Header from './components/Header.tsx';
 import OfferSection from './components/OfferSection.tsx';
+import './components/Responsive.css';
 import './index.css';
 
 export default function App() {
