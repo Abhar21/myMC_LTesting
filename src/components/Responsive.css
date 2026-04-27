@@ -42,9 +42,8 @@
 
   /* Carousel Stage Headline */
   .carousel-stage__headline {
-    font-size: 1.5rem !important;
-    /* Reduced to fit on 2 lines */
-    padding: 0 1rem;
+    font-size: 1.35rem !important; /* Slightly smaller */
+    padding: 0 1.5rem;
     line-height: 1.3;
   }
 
@@ -63,13 +62,13 @@
   }
 
   .carousel-viewport {
-    height: 500px !important; /* Match card height exactly to remove internal padding */
+    height: 420px !important; /* Reduced to match card height */
   }
 
   /* Cards adjustment for smaller screens */
   .carousel-card {
-    width: 300px !important;
-    height: 500px !important;
+    width: 280px !important;
+    height: 420px !important; /* Reduced height */
   }
 
   /* Footer responsiveness */
@@ -130,9 +129,9 @@
   }
 
   .carousel-stage__headline {
-    font-size: 1.25rem !important;
-    /* Even smaller for mobile devices */
+    font-size: 1.1rem !important; /* Smaller for better fit */
     line-height: 1.2;
+    padding: 0 1.2rem;
   }
 
   .carousel-stage {
@@ -151,12 +150,12 @@
   }
 
   .carousel-viewport {
-    height: 440px !important; /* Match card height exactly */
+    height: 360px !important; /* Match reduced card height */
   }
 
   .carousel-card {
-    width: 280px !important;
-    height: 440px !important;
+    width: 250px !important;
+    height: 360px !important; /* Reduced height */
   }
 
   .footer-banner__links {
