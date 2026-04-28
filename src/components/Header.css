@@ -58,6 +58,10 @@
   transition: transform 0.3s ease;
 }
 
+.header__logo-img--mobile {
+  display: none; /* Hidden on desktop by default */
+}
+
 .header__logo:hover .header__logo-img {
   transform: scale(1.05);
 }
@@ -121,5 +125,13 @@
 
   .header__logo-img {
     height: 26px;
+  }
+
+  .header__logo-img--desktop {
+    display: none !important; /* Hide desktop logo */
+  }
+
+  .header__logo-img--mobile {
+    display: block !important; /* Show mobile logo */
   }
 }

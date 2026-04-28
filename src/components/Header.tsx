@@ -6,10 +6,18 @@ export default function Header() {
       <div className="header__container">
         {/* LOGO IMAGE CONTAINER */}
         <div className="header__logo">
+          {/* DESKTOP LOGO */}
           <img
             src="/Pink.svg"
-            alt="myMOOMENT Logo"
-            className="header__logo-img"
+            alt="myMOOMENT Logo Desktop"
+            className="header__logo-img header__logo-img--desktop"
+          />
+          {/* MOBILE LOGO PLACEHOLDER */}
+          {/* Change the src below to your responsive logo path (e.g. "/Pink.svg") */}
+          <img
+            src="/Pink.svg"
+            alt="myMOOMENT Logo Mobile"
+            className="header__logo-img header__logo-img--mobile"
           />
         </div>
 
