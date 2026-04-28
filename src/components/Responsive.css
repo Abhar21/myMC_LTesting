@@ -71,6 +71,10 @@
     height: 380px !important; /* Reduced height */
   }
 
+  .carousel-card__inner {
+    padding: 1.5rem !important; /* Less padding to give text more width */
+  }
+
   /* Footer responsiveness */
   .footer-banner {
     flex-direction: column !important;
@@ -157,6 +161,10 @@
   .carousel-card {
     width: 240px !important;
     height: 320px !important; /* Reduced height */
+  }
+
+  .carousel-card__inner {
+    padding: 1.2rem !important; /* Even less padding on phones */
   }
 
   .footer-banner__links {
