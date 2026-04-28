@@ -19,8 +19,6 @@ export default function App() {
           <span className="footer-dot">•</span>
           <a href="#">Terms & Conditions</a>
           <span className="footer-dot">•</span>
-          <a href="#">Refund Policy</a>
-          <span className="footer-dot">•</span>
           <a href="#">Contact Us</a>
           <span className="footer-dot">•</span>
           <a href="#">About Us</a>

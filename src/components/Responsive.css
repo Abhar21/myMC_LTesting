@@ -80,16 +80,17 @@
   }
 
   .footer-banner__links {
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     justify-content: center !important;
-    gap: 0.8rem 1rem !important;
-    max-width: 300px;
+    gap: 0.5rem !important;
+    max-width: 100%;
     margin: 0 auto;
+    font-size: 0.55rem !important; /* Even smaller font size */
+    white-space: nowrap;
   }
 
-  .footer-banner__links .dot {
-    display: none !important;
-    /* Hide dots on mobile wrap */
+  .footer-banner__links .footer-dot {
+    display: inline-block !important; /* Keep dots visible on single line */
   }
 }
 
@@ -159,7 +160,8 @@
   }
 
   .footer-banner__links {
-    max-width: 280px;
-    font-size: 0.75rem !important;
+    max-width: 100%;
+    font-size: 0.45rem !important; /* Micro typography for small phones */
+    gap: 0.2rem !important; /* Tighter gap */
   }
 }

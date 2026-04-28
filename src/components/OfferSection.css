@@ -201,10 +201,12 @@
   transition-delay: 0.3s;
 }
 
-/* ── SMART HOVER LIFT ── */
-.carousel-card:hover .carousel-card__inner {
-  transform: translateY(-20px);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+/* ── SMART HOVER LIFT (Desktop Only) ── */
+@media (hover: hover) and (pointer: fine) {
+  .carousel-card:hover .carousel-card__inner {
+    transform: translateY(-20px);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  }
 }
 
 .carousel-card--active .carousel-card__image {
