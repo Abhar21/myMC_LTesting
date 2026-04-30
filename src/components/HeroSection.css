@@ -9,8 +9,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: #ffffff;
+  justify-content: flex-start; /* Changed from center to pull text up */
+  padding-top: 10rem; /* Controlled space from header */
+  background: var(--theme-bg, #F5F5F5);
   overflow: hidden;
   isolation: isolate;
   scroll-snap-align: start;
@@ -65,14 +66,25 @@
 
 .hero__eyebrow {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.25em;
+  color: rgba(0, 0, 0, 0.5);
   margin: 0;
-  margin-bottom: -0.5rem;
-  /* Pull headline closer */
+}
+
+.hero__eyebrow--top {
+  margin-bottom: 2.5rem;
+  padding: 0.6rem 1.4rem;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 100px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: inline-block;
+  animation: revealUp 1s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
 .hero__headline {
@@ -97,8 +109,7 @@
   font-weight: 600;
   /* Bold emphasis on the brand's core message */
   display: inline-block;
-  color: #111111;
-  /* Solid charcoal for the second line text */
+  color: #007AFF; /* Vibrant Blue */
 }
 
 /* ── STRIKE-THROUGH ANIMATION ── */
@@ -175,11 +186,11 @@
 
   /* ── GLOSSY PINK SHEEN ── */
   background: linear-gradient(110deg,
-      #ff2e7e 40%,
-      #ff6eb0 45%,
-      #ff2e7e 50%,
-      #ff6eb0 55%,
-      #ff2e7e 60%);
+      #007AFF 40%,
+      #5AC8FA 45%,
+      #007AFF 50%,
+      #5AC8FA 55%,
+      #007AFF 60%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

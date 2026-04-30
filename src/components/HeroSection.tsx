@@ -19,7 +19,7 @@ export default function HeroSection() {
           <div className="hero__ghost-img-wrapper" style={{ backgroundImage: 'url(/Makeup.avif)' }}></div>
         </div>
         <div className="hero__ghost-card hero__ghost-card--4">
-          <div className="hero__ghost-img-wrapper" style={{ backgroundImage: 'url(/Decor.avif)' }}></div>
+          <div className="hero__ghost-img-wrapper" style={{ backgroundImage: 'url(/decore.avif)' }}></div>
         </div>
         <div className="hero__ghost-card hero__ghost-card--5">
           <div className="hero__ghost-img-wrapper" style={{ backgroundImage: 'url(/Venue.avif)' }}></div>

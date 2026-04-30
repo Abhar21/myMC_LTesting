@@ -36,7 +36,7 @@ const SERVICES: Service[] = [
     title: 'Decor',
     description: 'Elegant setups that bring your vision to life.',
     color: 'rgba(120, 255, 180, 0.08)',
-    image: '/Decor.avif'
+    image: '/Decore.avif'
   },
   {
     id: 'photography',
@@ -109,8 +109,13 @@ export default function OfferSection() {
     const opacity = isVisible ? 1 - absDiff * 0.25 : 0;
     const blur = absDiff * 0.5;
 
+    const isCorner = absDiff >= 2;
+    const cardHeight = isCorner ? 580 : 520;
+    const translateY = isCorner ? (580 - 520) / 2 : 0; // Center offset to make it grow downwards only
+
     return {
-      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+      transform: `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+      height: `${cardHeight}px`,
       opacity: isVisible ? Math.max(opacity, 0.4) : 0,
       visibility: isVisible ? 'visible' : 'hidden' as any,
       filter: `blur(${blur}px)`,
@@ -122,27 +127,27 @@ export default function OfferSection() {
 
   return (
     <>
-      <div className="offer-banner">
-        <span>INDIA'S #1 Direct Booking Event Platform</span>
-        <div className="banner-groups">
-          <a href="#" className="banner-cta">
-            Pre-Register on
-            <img src="/220782.png" alt="Play Store" className="banner-icon banner-icon--white" />
-          </a>
-          <span className="banner-separator"></span>
-          <div className="banner-info">
-            Coming Soon to
-            <img src="/747.png" alt="App Store" className="banner-icon banner-icon--white" />
-          </div>
-        </div>
-      </div>
+
 
       <section className="carousel-stage" id="offer-section">
         <div className="carousel-stage__header">
+          <p className="hero__eyebrow" style={{ marginBottom: '-0.4rem' }}>
+            INDIA'S #1 Direct Booking Event Platform
+          </p>
           <h1 className="carousel-stage__headline">
             Others ask you to Call,<br />
-            <span className="carousel-stage__headline-accent">We let you BOOK</span>
+            <span className="carousel-stage__headline-accent">We let you <span className="typewriter-text" data-text="Book">Book</span></span>
           </h1>
+          <div className="carousel-stage__app-info">
+            <a href="#" className="carousel-stage__app-badge">
+              <img src="/220782.png" alt="Play Store" />
+              <span>Pre-Register on Play Store</span>
+            </a>
+            <div className="carousel-stage__app-badge carousel-stage__app-badge--disabled">
+              <img src="/747.png" alt="App Store" />
+              <span>Coming Soon to App Store</span>
+            </div>
+          </div>
         </div>
 
         <div
@@ -161,12 +166,12 @@ export default function OfferSection() {
                   onClick={() => setActiveIndex(index)}
                 >
                   <div className="carousel-card__inner">
+                    <div className="carousel-card__top-badge">
+                      {service.title}
+                    </div>
                     <div className="carousel-card__image" style={{ backgroundImage: `url(${service.image})` }} />
                     <div className="carousel-card__overlay" />
-                    <div className="carousel-card__content">
-                      <h3 className="carousel-card__title">{service.title}</h3>
-                      <p className="carousel-card__description">{service.description}</p>
-                    </div>
+
                   </div>
                 </div>
               );
@@ -174,19 +179,7 @@ export default function OfferSection() {
           </div>
         </div>
 
-        <div className="carousel-nav">
-          {SERVICES.map((_, i) => (
-            <button
-              key={i}
-              className={`carousel-dot ${activeIndex % SERVICES.length === i ? 'carousel-dot--active' : ''}`}
-              onClick={() => {
-                // Jump to the middle set's version of this dot
-                setIsTransitioning(true);
-                setActiveIndex(OFFSET + i);
-              }}
-            />
-          ))}
-        </div>
+
       </section>
     </>
   );

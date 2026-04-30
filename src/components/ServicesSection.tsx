@@ -36,7 +36,7 @@ const SERVICES: Service[] = [
     title: 'Decor',
     description: 'Transform spaces into experiences',
     color: 'rgba(120, 255, 180, 0.08)', // Mint glass
-    image: '/Decor.avif'
+    image: '/decore.avif'
   },
   {
     id: 'venues',

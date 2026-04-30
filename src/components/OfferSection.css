@@ -3,7 +3,7 @@
   width: 100%;
   flex: 1;
   padding: 1.5rem 2rem 2rem;
-  background-color: #000000;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .carousel-stage__header {
-  margin-bottom: 2rem;
+  margin-bottom: 9rem; /* Significantly increased gap */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -30,10 +30,42 @@
   animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.carousel-stage__active-title-container {
+  margin-top: -3rem; /* Tucked closer to the cards */
+  margin-bottom: -4rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.carousel-stage__active-title {
+  font-family: 'Cookie', cursive;
+  font-size: 3.5rem;
+  color: #4A3C31;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  animation: titleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 @keyframes slideUpFade {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -46,13 +78,13 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.3rem 0.8rem; /* Even smaller padding */
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 100px;
   font-family: 'Outfit', sans-serif;
   font-size: 0.55rem; /* Even smaller font size */
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7); /* Slightly more subtle color */
+  color: rgba(0, 0, 0, 0.6); /* Darker text for light theme */
   letter-spacing: 0.15em;
   text-transform: uppercase;
   backdrop-filter: blur(10px);
@@ -67,34 +99,118 @@
   opacity: 0.8;
 }
 
-.pill-wreath--right {
-  /* No special mirror needed as SVG paths are already mirrored */
-}
+
 
 .carousel-stage__headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.4rem, 4vw, 2.4rem);
-  font-weight: 300;
-  color: #ffffff;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  line-height: 1.4;
-  opacity: 0.9;
+  font-family: 'Cookie', cursive !important;
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem); /* Increased size because Cookie renders naturally smaller */
+  font-weight: 400; /* Script fonts flow best at normal weight */
+  color: #4A3C31;
+  letter-spacing: 0.05em; /* Increased spacing for a more open cursive look */
+  text-transform: none; /* Sentence case like the image */
+  line-height: 0.9;
+  opacity: 1;
 }
 
 .carousel-stage__headline-accent {
-  font-weight: 600;
-  background: linear-gradient(135deg, #ff2e7e 0%, #ff6eb0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+  color: #007AFF; /* Vibrant Blue */
+}
+
+/* ── APP BADGES UI ── */
+.carousel-stage__app-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem; /* Added some margin back for better visibility */
+  opacity: 1;
+}
+
+.carousel-stage__app-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: none; /* Removed strokes as requested */
+  border-radius: 100px;
+  color: #007AFF; /* Platform Blue */
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.carousel-stage__app-badge:hover {
+  background: #007AFF; /* Fill with blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 122, 255, 0.25);
+  color: #ffffff; /* Text turns white */
+}
+
+.carousel-stage__app-badge:hover img {
+  filter: brightness(0) invert(1); /* Icon turns white */
+}
+
+.carousel-stage__app-badge img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 1;
+  /* Apply blue filter to icons */
+  filter: invert(33%) sepia(90%) saturate(3000%) hue-rotate(200deg) brightness(100%) contrast(105%);
+}
+
+.carousel-stage__app-badge--disabled {
+  opacity: 0.95; /* Matched to Play Store opacity as requested */
+  cursor: default;
+}
+
+.carousel-stage__app-badge--disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+.typewriter-text {
+  display: inline-block;
+  position: relative;
+  color: transparent; /* Acts as an invisible spacer to hold the exact text width */
+  vertical-align: bottom;
+}
+
+.typewriter-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #007AFF; /* Vibrant Blue */
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0; /* Start fully hidden */
+  border-right: 3px solid #007AFF; /* Blue cursor */
+  animation: 
+    typewriter-reveal 0.8s steps(4, end) 0.5s forwards,
+    blink-caret 0.8s step-end infinite;
+}
+
+@keyframes typewriter-reveal {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #007AFF; }
 }
 
 .carousel-viewport {
   position: relative;
   width: 100%;
   max-width: 1400px;
-  height: 440px;
+  height: 580px; /* Increased to accommodate taller cards */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,13 +233,13 @@
 
 .carousel-card {
   position: absolute;
-  width: 320px;
-  height: 420px;
+  width: 400px; /* Increased from 320px */
+  height: 520px; /* Increased to 520px as requested */
   border-radius: 32px;
   cursor: pointer;
   transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: visible; /* Allow inner shadow/lift to show */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none; /* Moved to inner to fix ghost outline on hover */
 }
 
 .carousel-card__inner {
@@ -133,12 +249,33 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 2rem;
-  background: #111111;
+  background: #ffffff; /* White glass theme for inactive cards */
   border-radius: 32px;
   overflow: hidden;
   isolation: isolate;
+  border: none; /* Removed black stroke */
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+
+.carousel-card__top-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.8rem 1.5rem 3.5rem; /* Tall padding for the gradient */
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.6) 0%, 
+    rgba(0, 0, 0, 0.3) 50%, 
+    rgba(0, 0, 0, 0) 100%);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  z-index: 10;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-card__image {
@@ -149,7 +286,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.6;
+  opacity: 0.5; /* Wash out into the white background */
   filter: saturate(1.2);
   transition: all 1s ease;
   z-index: 0;
@@ -165,6 +302,16 @@
     transparent 100%
   );
   z-index: 1;
+  opacity: 0; /* Hide black gradient on inactive cards */
+  transition: opacity 1s ease;
+}
+
+.carousel-card--active .carousel-card__overlay {
+  opacity: 1;
+}
+
+.carousel-card--active .carousel-card__inner {
+  background: #111111; /* Keep active card dark */
 }
 
 .carousel-card__content {
@@ -177,9 +324,15 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #111111; /* Dark text for white inactive cards */
   margin: 0 0 0.5rem 0;
   line-height: 1.1;
+  text-shadow: none; /* Remove shadow for clean white look */
+  transition: color 1s ease, text-shadow 1s ease;
+}
+
+.carousel-card--active .carousel-card__title {
+  color: #ffffff; /* White text for active card */
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -204,8 +357,8 @@
 /* ── SMART HOVER LIFT (Desktop Only) ── */
 @media (hover: hover) and (pointer: fine) {
   .carousel-card:hover .carousel-card__inner {
-    transform: translateY(-20px);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    transform: translateY(-8px); /* Reduced hover lift distance */
+    box-shadow: 0 30px 80px rgba(255, 255, 255, 0.9); /* Soft ethereal white glow instead of black shadow */
   }
 }
 
@@ -225,7 +378,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -242,8 +395,8 @@
 .offer-banner {
   width: 100%;
   padding: 0.8rem 1.5rem;
-  background-color: #111111;
-  color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -251,7 +404,7 @@
   font-size: 0.82rem;
   font-family: 'Outfit', sans-serif;
   letter-spacing: 0.03em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: none; /* Removed outline */
   z-index: 100;
 }
 
@@ -271,13 +424,13 @@
 }
 
 .banner-info {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .banner-separator {
   width: 1px;
   height: 14px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .banner-icon {
@@ -287,14 +440,14 @@
 }
 
 .banner-icon--white {
-  filter: brightness(0) invert(1);
+  filter: brightness(0); /* Black icon for light theme */
   opacity: 0.8;
 }
 
 .footer-banner {
   border-bottom: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  background-color: #111111;
+  border-top: none; /* Removed outline */
+  background-color: transparent;
   padding: 1rem 5rem; /* Matched header padding */
   display: flex;
   justify-content: space-between;
@@ -303,7 +456,7 @@
 
 .footer-banner__copyright {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.4);
   font-family: 'Outfit', sans-serif;
 }
 
@@ -322,7 +475,7 @@
 }
 
 .footer-banner__links a {
-  color: #ffffff;
+  color: #111111;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -333,7 +486,7 @@
 }
 
 .footer-dot {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 /* ── RESPONSIVE ── */
