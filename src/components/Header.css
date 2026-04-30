@@ -36,7 +36,7 @@
   display: block;
   width: 24px;
   height: 1.5px;
-  background-color: #4A3C31; /* Matching the brown/black theme */
+  background-color: #ffffff; /* Switched to white for deep red BG */
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

@@ -84,7 +84,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 0.55rem; /* Even smaller font size */
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.6); /* Darker text for light theme */
+  color: rgba(255, 255, 255, 0.8); /* Darker text for light theme */
   letter-spacing: 0.15em;
   text-transform: uppercase;
   backdrop-filter: blur(10px);
@@ -105,7 +105,7 @@
   font-family: 'Cookie', cursive !important;
   font-size: clamp(2.5rem, 5.5vw, 4.2rem); /* Increased size because Cookie renders naturally smaller */
   font-weight: 400; /* Script fonts flow best at normal weight */
-  color: #4A3C31;
+  color: #ffffff;
   letter-spacing: 0.05em; /* Increased spacing for a more open cursive look */
   text-transform: none; /* Sentence case like the image */
   line-height: 0.9;
@@ -115,6 +115,17 @@
 .carousel-stage__headline-accent {
   font-weight: 400;
   color: #007AFF; /* Vibrant Blue */
+}
+
+.carousel-stage__subline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
 }
 
 /* ── APP BADGES UI ── */

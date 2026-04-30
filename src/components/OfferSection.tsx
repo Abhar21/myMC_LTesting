@@ -138,6 +138,7 @@ export default function OfferSection() {
             Others ask you to Call,<br />
             <span className="carousel-stage__headline-accent">We let you <span className="typewriter-text" data-text="Book">Book</span></span>
           </h1>
+          <p className="carousel-stage__subline">One tap booking. No calls needed.</p>
           <div className="carousel-stage__app-info">
             <a href="#" className="carousel-stage__app-badge">
               <img src="/220782.png" alt="Play Store" />
