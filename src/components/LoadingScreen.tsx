@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './LoadingScreen.css';
 
 const LoadingScreen: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
 
   // We keep the component in the DOM for a bit after the main content is ready
   // to allow for a smooth transition, or we can handle it in App.tsx
